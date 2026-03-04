@@ -9,7 +9,7 @@
 
 ---
 
-# 📌 MemoryPoint: EC2 Instance Types
+# 📌  EC2 Instance Types
 
 ## Trigger Recall
 
@@ -55,7 +55,7 @@ EC2 instances are **categorized by compute, memory, storage, or GPU capability d
 
 ---
 
-# 📌 MemoryPoint: AWS EBS Internal Architecture
+# 📌  AWS EBS Internal Architecture
 
 ## Trigger Recall
 
@@ -119,7 +119,7 @@ Database files → EBS
 
 ---
 
-# 📌 MemoryPoint: AWS EFS Architecture
+# 📌  AWS EFS Architecture
 
 ## Trigger Recall
 
@@ -180,7 +180,7 @@ Web servers share uploaded images
 
 ---
 
-# 📌 MemoryPoint: Linux LVM
+# 📌  Linux LVM
 
 ## Trigger Recall
 
@@ -264,7 +264,7 @@ LVM pools disks into **volume groups** and creates **resizable logical volumes**
 
 ---
 
-# 📌 MemoryPoint: Jenkins High Availability Architecture
+# 📌  Jenkins High Availability Architecture
 
 ## Trigger Recall
 
@@ -324,7 +324,7 @@ Leader election
 
 ---
 
-# 📌 MemoryPoint: ZooKeeper (Distributed Coordination)
+# 📌  ZooKeeper (Distributed Coordination)
 
 ## Trigger Recall
 
@@ -385,7 +385,7 @@ Hadoop cluster
 
 ---
 
-# 📌 MemoryPoint: Linux Namespaces + cgroups
+# 📌  Linux Namespaces + cgroups
 
 ## Trigger Recall
 
@@ -459,7 +459,7 @@ entire application killed
 
 ---
 
-# 📌 MemoryPoint: Docker Networking
+# 📌  Docker Networking
 
 ## Trigger Recall
 
@@ -524,7 +524,7 @@ Containers behave like **machines in same LAN**.
 
 ---
 
-# 📌 MemoryPoint: Kubernetes Networking Deep Dive
+# 📌  Kubernetes Networking Deep Dive
 
 ## Trigger Recall
 
