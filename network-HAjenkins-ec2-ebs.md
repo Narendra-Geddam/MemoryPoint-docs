@@ -67,20 +67,7 @@ It behaves like a **virtual disk**.
 
 ## Architecture
 
-```mermaid
-graph TD
-
-EC2["EC2 Instance"]
-ENA["Elastic Network Adapter"]
-EBSNode["EBS Storage Node"]
-Rep1["Replica AZ Storage"]
-Rep2["Replica AZ Storage"]
-
-EC2 --> ENA
-ENA --> EBSNode
-EBSNode --> Rep1
-EBSNode --> Rep2
-```
+![diagram](./assets/diagrams/network-HAjenkins-ec2-ebs/network-HAjenkins-ec2-ebs.rendered-1.svg)
 
 ---
 
@@ -131,21 +118,7 @@ Multiple EC2 instances can mount it.
 
 ## Architecture
 
-```mermaid
-graph TD
-
-EC21["EC2 Instance"]
-EC22["EC2 Instance"]
-Mount1["Mount Target AZ1"]
-Mount2["Mount Target AZ2"]
-EFS["EFS File System"]
-
-EC21 --> Mount1
-EC22 --> Mount2
-
-Mount1 --> EFS
-Mount2 --> EFS
-```
+![diagram](./assets/diagrams/network-HAjenkins-ec2-ebs/network-HAjenkins-ec2-ebs.rendered-2.svg)
 
 ---
 
@@ -196,27 +169,7 @@ Disk → PV → VG → LV → Filesystem
 
 ## Architecture
 
-```mermaid
-graph TD
-
-Disk1["Disk /dev/xvdf"]
-Disk2["Disk /dev/xvdg"]
-
-PV1["Physical Volume"]
-PV2["Physical Volume"]
-
-VG["Volume Group"]
-
-LV1["Logical Volume"]
-
-Disk1 --> PV1
-Disk2 --> PV2
-
-PV1 --> VG
-PV2 --> VG
-
-VG --> LV1
-```
+![diagram](./assets/diagrams/network-HAjenkins-ec2-ebs/network-HAjenkins-ec2-ebs.rendered-3.svg)
 
 ---
 
@@ -274,25 +227,7 @@ Jenkins HA requires **shared storage and failover mechanism**.
 
 ## Architecture
 
-```mermaid
-graph TD
-
-User["Users"]
-LB["Load Balancer"]
-
-J1["Jenkins Primary"]
-J2["Jenkins Standby"]
-
-EFS["Shared Storage EFS"]
-
-User --> LB
-
-LB --> J1
-LB --> J2
-
-J1 --> EFS
-J2 --> EFS
-```
+![diagram](./assets/diagrams/network-HAjenkins-ec2-ebs/network-HAjenkins-ec2-ebs.rendered-4.svg)
 
 ---
 
@@ -343,19 +278,7 @@ Cluster coordination
 
 ## Architecture
 
-```mermaid
-graph TD
-
-App1["Node 1"]
-App2["Node 2"]
-App3["Node 3"]
-
-ZK["ZooKeeper Cluster"]
-
-App1 --> ZK
-App2 --> ZK
-App3 --> ZK
-```
+![diagram](./assets/diagrams/network-HAjenkins-ec2-ebs/network-HAjenkins-ec2-ebs.rendered-5.svg)
 
 ---
 
@@ -413,23 +336,7 @@ cgroups → resource limits
 
 ## cgroups Architecture
 
-```mermaid
-graph TD
-
-Container1["Container A"]
-Container2["Container B"]
-
-CG["cgroups Controller"]
-
-CPU["CPU limit"]
-MEM["Memory limit"]
-
-Container1 --> CG
-Container2 --> CG
-
-CG --> CPU
-CG --> MEM
-```
+![diagram](./assets/diagrams/network-HAjenkins-ec2-ebs/network-HAjenkins-ec2-ebs.rendered-6.svg)
 
 ---
 
@@ -475,20 +382,7 @@ Linux bridge
 
 ## veth Pair Diagram
 
-```mermaid
-graph LR
-
-Container["Container"]
-veth1["veth-container"]
-veth2["veth-host"]
-Bridge["docker0 bridge"]
-Host["Host Network"]
-
-Container --> veth1
-veth1 --- veth2
-veth2 --> Bridge
-Bridge --> Host
-```
+![diagram](./assets/diagrams/network-HAjenkins-ec2-ebs/network-HAjenkins-ec2-ebs.rendered-7.svg)
 
 ---
 
@@ -506,19 +400,7 @@ Bridge --> Host
 
 ## Docker LAN
 
-```mermaid
-graph TD
-
-C1["Container 1"]
-C2["Container 2"]
-C3["Container 3"]
-
-Bridge["docker0"]
-
-C1 --> Bridge
-C2 --> Bridge
-C3 --> Bridge
-```
+![diagram](./assets/diagrams/network-HAjenkins-ec2-ebs/network-HAjenkins-ec2-ebs.rendered-8.svg)
 
 Containers behave like **machines in same LAN**.
 
@@ -540,23 +422,7 @@ No NAT required
 
 ## Cluster Network Architecture
 
-```mermaid
-graph TD
-
-Pod1["Pod A"]
-Pod2["Pod B"]
-
-Node1["Node 1"]
-Node2["Node 2"]
-
-Overlay["Overlay Network VXLAN"]
-
-Pod1 --> Node1
-Pod2 --> Node2
-
-Node1 --> Overlay
-Node2 --> Overlay
-```
+![diagram](./assets/diagrams/network-HAjenkins-ec2-ebs/network-HAjenkins-ec2-ebs.rendered-9.svg)
 
 ---
 
@@ -582,20 +448,7 @@ Cilium
 
 ## Pod Networking Flow
 
-```mermaid
-graph LR
-
-Pod["Pod"]
-veth["veth pair"]
-Bridge["Node bridge"]
-Overlay["VXLAN overlay"]
-RemotePod["Remote Pod"]
-
-Pod --> veth
-veth --> Bridge
-Bridge --> Overlay
-Overlay --> RemotePod
-```
+![diagram](./assets/diagrams/network-HAjenkins-ec2-ebs/network-HAjenkins-ec2-ebs.rendered-10.svg)
 
 ---
 
@@ -632,5 +485,6 @@ ZooKeeper → distributed coordination
 * Namespaces & cgroups
 * Docker networking
 * Kubernetes networking
+
 
 

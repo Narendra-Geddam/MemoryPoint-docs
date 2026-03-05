@@ -181,25 +181,7 @@ BUT applied **only in one namespace**.
 
 # Concept Dependency Graph
 
-```mermaid
-graph TD
-
-User[User / Identity]
-Auth[Authentication]
-
-Auth --> RBAC
-RBAC --> Role
-RBAC --> ClusterRole
-Role --> RoleBinding
-ClusterRole --> ClusterRoleBinding
-
-RoleBinding --> NamespaceAccess
-ClusterRoleBinding --> ClusterAccess
-
-ServiceAccount --> RBAC
-OIDC --> Authentication
-IAM --> Authentication
-```
+![diagram](./assets/diagrams/RBAC/RBAC.rendered-1.svg)
 
 **How to read this**
 
@@ -223,23 +205,7 @@ Steps:
 
 Flow:
 
-```mermaid
-flowchart LR
-
-Dev[Developer IAM User]
-IAM[AWS IAM Authentication]
-AuthMap[aws-auth ConfigMap]
-RBAC[RBAC RoleBinding]
-Namespace[Dev Namespace Access]
-Kubectl[kubectl using kubeconfig]
-
-Dev --> IAM
-IAM --> AuthMap
-AuthMap --> RBAC
-RBAC --> Namespace
-Dev --> Kubectl
-Kubectl --> Namespace
-```
+![diagram](./assets/diagrams/RBAC/RBAC.rendered-2.svg)
 
 Explanation:
 
@@ -259,20 +225,7 @@ Used for:
 
 Flow:
 
-```mermaid
-flowchart LR
-
-SA[ServiceAccount]
-Secret[ServiceAccount Token Secret]
-Kubeconfig[Generated kubeconfig]
-Kubectl[kubectl Access]
-API[Kubernetes API Server]
-
-SA --> Secret
-Secret --> Kubeconfig
-Kubeconfig --> Kubectl
-Kubectl --> API
-```
+![diagram](./assets/diagrams/RBAC/RBAC.rendered-3.svg)
 
 Explanation:
 
@@ -286,22 +239,7 @@ Explanation:
 
 Flow:
 
-```mermaid
-flowchart LR
-
-User[Developer]
-OIDC[OIDC Provider]
-Token[JWT Token]
-Kubeconfig[kubeconfig]
-Kubectl[kubectl]
-API[Kubernetes API Server]
-
-User --> OIDC
-OIDC --> Token
-Token --> Kubeconfig
-Kubeconfig --> Kubectl
-Kubectl --> API
-```
+![diagram](./assets/diagrams/RBAC/RBAC.rendered-4.svg)
 
 Explanation:
 
@@ -434,9 +372,9 @@ kubectl
 ### Create Role
 
 ```bash
-kubectl create role pod-reader \
-  --verb=get,list,watch \
-  --resource=pods \
+kubectl create role pod-reader /
+  --verb=get,list,watch /
+  --resource=pods /
   -n dev
 ```
 
@@ -445,9 +383,9 @@ kubectl create role pod-reader \
 ### Create RoleBinding
 
 ```bash
-kubectl create rolebinding dev-user-binding \
-  --role=pod-reader \
-  --user=dev-user \
+kubectl create rolebinding dev-user-binding /
+  --role=pod-reader /
+  --user=dev-user /
   -n dev
 ```
 
@@ -509,3 +447,4 @@ Review this concept at:
 ---
 
 💡 If you'd like, I can also generate a **second MemoryPoint specifically for "Kubernetes RBAC YAML patterns + real production examples"**, which is extremely useful in DevOps interviews and real cluster setups.
+

@@ -43,26 +43,7 @@
 
 # Concept Dependency Graph
 
-```mermaid
-graph TD
-
-A[Linux File System Basics]
-B[Linux Permissions Model]
-C[Git Version Control Concepts]
-D[Docker Container Build Process]
-E[AWS Infrastructure Monitoring]
-F[Jenkins CI/CD Pipelines]
-G[Kubernetes Resource Management]
-
-A --> HardLinks
-A --> SoftLinks
-B --> chmod
-C --> DetachedHEAD
-D --> ImageOptimization
-E --> EC2Latency
-F --> PipelineDebug
-G --> OOMKilled
-````
+![diagram](./assets/diagrams/troubleshoot-lifecycle/troubleshoot-lifecycle.rendered-1.svg)
 
 **How to read this diagram**
 
@@ -90,21 +71,7 @@ A **hard link** is another name pointing to the **same inode and data blocks**, 
 | Survives original deletion | Yes       | No        |
 | Detectable as link         | No        | Yes       |
 
-```mermaid
-flowchart LR
-
-A[File Data Blocks]
-B[Inode]
-C[Original File Name]
-D[Hard Link Name]
-E[Soft Link]
-
-C --> B
-D --> B
-B --> A
-
-E --> C
-```
+![diagram](./assets/diagrams/troubleshoot-lifecycle/troubleshoot-lifecycle.rendered-2.svg)
 
 **How to read this**
 
@@ -131,15 +98,7 @@ Group   = 5 = r-x
 Others  = 5 = r-x
 ```
 
-```mermaid
-graph LR
-
-A[File Permissions]
-
-A --> Owner[rwx]
-A --> Group[r-x]
-A --> Others[r-x]
-```
+![diagram](./assets/diagrams/troubleshoot-lifecycle/troubleshoot-lifecycle.rendered-3.svg)
 
 ### Directory Behavior
 
@@ -159,12 +118,7 @@ A **detached HEAD** means Git is pointing directly to a **commit instead of a br
 
 New commits made here can become **orphaned**.
 
-```mermaid
-graph LR
-
-A[Commit1] --> B[Commit2] --> C[Commit3 main]
-B --> D[Detached HEAD]
-```
+![diagram](./assets/diagrams/troubleshoot-lifecycle/troubleshoot-lifecycle.rendered-4.svg)
 
 **How to read**
 
@@ -177,30 +131,7 @@ B --> D[Detached HEAD]
 
 ### Correct Troubleshooting Flow
 
-```mermaid
-flowchart TD
-
-A[User reports latency]
-B[Check CloudWatch Metrics]
-C{Resource Bottleneck?}
-D[CPU High]
-E[Disk I/O High]
-F[Network Issues]
-G[Check Application Logs]
-H[Check Dependencies DB APIs]
-I[Scale or Optimize]
-
-A --> B
-B --> C
-C --> D
-C --> E
-C --> F
-D --> G
-E --> G
-F --> G
-G --> H
-H --> I
-```
+![diagram](./assets/diagrams/troubleshoot-lifecycle/troubleshoot-lifecycle.rendered-5.svg)
 
 **How to read**
 
@@ -219,16 +150,7 @@ H --> I
 4. **Use .dockerignore**
 5. **Combine RUN layers**
 
-```mermaid
-flowchart LR
-
-A[Builder Stage]
-B[Compile Artifact]
-C[Final Runtime Image]
-
-A --> B
-B --> C
-```
+![diagram](./assets/diagrams/troubleshoot-lifecycle/troubleshoot-lifecycle.rendered-6.svg)
 
 **Explanation**
 
@@ -241,21 +163,7 @@ B --> C
 
 ### Proper Debugging Order
 
-```mermaid
-flowchart TD
-
-A[Pipeline Failure]
-B[Check Jenkins Console Output]
-C{What Failed?}
-
-C --> D[Test Failure]
-C --> E[Pipeline Script Failure]
-
-D --> F[Check Test Reports]
-F --> G[Reproduce Locally]
-
-E --> H[Fix Jenkinsfile Logic]
-```
+![diagram](./assets/diagrams/troubleshoot-lifecycle/troubleshoot-lifecycle.rendered-7.svg)
 
 **Explanation**
 
@@ -271,24 +179,7 @@ A container exceeded its **memory limit**.
 
 ### Investigation Steps
 
-```mermaid
-flowchart TD
-
-A[Pod Crash]
-B[kubectl describe pod]
-C[Check OOMKilled Event]
-D[Check Memory Limits]
-E[Inspect Container Logs]
-F[Memory Leak or High Usage]
-G[Increase Limits or Fix App]
-
-A --> B
-B --> C
-C --> D
-D --> E
-E --> F
-F --> G
-```
+![diagram](./assets/diagrams/troubleshoot-lifecycle/troubleshoot-lifecycle.rendered-8.svg)
 
 **Explanation**
 
@@ -405,15 +296,7 @@ Then go deeper.
 
 ### Production Troubleshooting Pattern
 
-```mermaid
-flowchart LR
-
-Alert --> Metrics
-Metrics --> Logs
-Logs --> RootCause
-RootCause --> Fix
-Fix --> Verify
-```
+![diagram](./assets/diagrams/troubleshoot-lifecycle/troubleshoot-lifecycle.rendered-9.svg)
 
 **Explanation**
 
@@ -485,6 +368,4 @@ Never scale before you **know the bottleneck**.
 ---
 
 ✅ This MemoryPoint now covers **7 major DevOps interview concepts** frequently asked in **SRE / DevOps / Cloud engineer interviews**.
-
-```
-```
+`n
