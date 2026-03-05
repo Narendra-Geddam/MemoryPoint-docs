@@ -1,11 +1,11 @@
-````markdown
+
+
+
+# 📌  DevOps Interview Core Concepts (Linux, Git, Docker, AWS, Kubernetes, CI/CD)
 ![MemoryPoint](https://img.shields.io/badge/MemoryPoint-DevOps-blue)
 ![Topic](https://img.shields.io/badge/Topic-Linux%20%7C%20Git%20%7C%20Docker%20%7C%20Kubernetes%20%7C%20CI/CD-green)
 ![Level](https://img.shields.io/badge/Level-Interview%20Prep-orange)
 ![Status](https://img.shields.io/badge/Status-Study%20Artifact-important)
-
-# 📌 MemoryPoint: DevOps Interview Core Concepts (Linux, Git, Docker, AWS, Kubernetes, CI/CD)
-
 ## 📚 Table of Contents
 - [Trigger Recall (What I Learned)](#trigger-recall-what-i-learned)
 - [Concept Dependency Graph](#concept-dependency-graph)
